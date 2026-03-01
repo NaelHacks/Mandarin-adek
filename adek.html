@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandarin Ekskul Kelas 2</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #e3f2fd; padding: 20px; text-align: center; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        h1 { color: #1565c0; margin-bottom: 5px; }
+        p { color: #546e7a; font-weight: bold; margin-bottom: 25px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+        
+        /* Kartu Belajar */
+        .card {
+            background: #ffffff;
+            border: 3px solid #90caf9;
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .card:hover { transform: translateY(-5px); background-color: #f1f8ff; }
+        
+        .hanzi { font-size: 3rem; font-weight: bold; color: #2c3e50; }
+        .pinyin { font-size: 1.2rem; color: #1e88e5; }
+        .arti { font-size: 1.3rem; color: #e53935; display: none; font-weight: bold; }
+
+        /* Saat kartu diklik */
+        .flipped { background-color: #fff9c4; border-color: #fbc02d; }
+        .flipped .hanzi, .flipped .pinyin { display: none; }
+        .flipped .arti { display: block; }
+        
+        .no { position: absolute; top: 5px; left: 10px; font-size: 0.8rem; color: #999; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ Mandarin Ekskul ✨</h1>
+    <p>Materi Mid Semester II Kelas 2</p>
+
+    <div class="grid">
+        <div class="card" onclick="putar(this)"> <span class="no">1</span> <span class="hanzi">天</span> <span class="pinyin">Tian</span> <span class="arti">Langit</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">2</span> <span class="hanzi">地</span> <span class="pinyin">Dì</span> <span class="arti">Daratan</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">3</span> <span class="hanzi">花</span> <span class="pinyin">Hua</span> <span class="arti">Bunga</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">4</span> <span class="hanzi">草</span> <span class="pinyin">Cǎo</span> <span class="arti">Rumput</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">5</span> <span class="hanzi">草地</span> <span class="pinyin">Cǎo dì</span> <span class="arti">Padang rumput</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">6</span> <span class="hanzi">树</span> <span class="pinyin">Shù</span> <span class="arti">Pohon</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">7</span> <span class="hanzi">树干</span> <span class="pinyin">Shù gàn</span> <span class="arti">Batang pohon</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">8</span> <span class="hanzi">叶子</span> <span class="pinyin">Yè zi</span> <span class="arti">Daun</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">9</span> <span class="hanzi">很</span> <span class="pinyin">Hěn</span> <span class="arti">Sangat</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">10</span> <span class="hanzi">大</span> <span class="pinyin">Dà</span> <span class="arti">Besar</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">11</span> <span class="hanzi">小</span> <span class="pinyin">Xiǎo</span> <span class="arti">Kecil</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">12</span> <span class="hanzi">多</span> <span class="pinyin">Duō</span> <span class="arti">Banyak</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">13</span> <span class="hanzi">少</span> <span class="pinyin">Shǎo</span> <span class="arti">Sedikit</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">14</span> <span class="hanzi">高</span> <span class="pinyin">Gāo</span> <span class="arti">Tinggi</span> </div>
+        <div class="card" onclick="putar(this)"> <span class="no">15</span> <span class="hanzi">美</span> <span class="pinyin">Měi</span> <span class="arti">Cantik</span> </div>
+    </div>
+</div>
+
+<script>
+    function putar(el) {
+        el.classList.toggle('flipped');
+        if(el.classList.contains('flipped')) {
+            const hanz = el.querySelector('.hanzi').innerText;
+            const ut = new SpeechSynthesisUtterance(hanz);
+            ut.lang = 'zh-CN';
+            window.speechSynthesis.speak(ut);
+        }
+    }
+</script>
+
+</body>
+</html>
